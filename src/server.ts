@@ -2,6 +2,7 @@ import express, { Request, Response, Application } from "express";
 import { json, urlencoded } from "body-parser";
 import morgan from "morgan";
 import cors from "cors";
+import path from "path";
 import { ConnectMongoDB } from "./utils/db";
 import { TodoRoutes } from "./resources/todos/todos.route";
 
@@ -22,9 +23,12 @@ class Server {
     this.server.use(json());
     this.server.use(urlencoded({ extended: true }));
     this.server.use(morgan("dev"));
-    this.server.route("/").get((req: Request, res: Response) => {
-      res.status(200).send("<h1>Typescript App</h1>");
-    });
+    if (process.env.NODE_ENV === "production") {
+      this.server.use(express.static("../client/build"));
+      this.server.get("*", (req: Request, res: Response): void => {
+        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+      });
+    }
   }
 
   public connectDB(): void {
