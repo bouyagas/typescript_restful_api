@@ -21,7 +21,7 @@ class Server {
     this.server.use(cors());
     this.server.use(json());
     this.server.use(urlencoded({ extended: true }));
-    this.server.use(morgan("combined"));
+    this.server.use(morgan("dev"));
     this.server.route("/").get((req: Request, res: Response) => {
       res.status(200).send("<h1>Typescript App</h1>");
     });
