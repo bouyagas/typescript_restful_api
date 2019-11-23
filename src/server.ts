@@ -23,9 +23,7 @@ class Server {
     this.server.use(urlencoded({ extended: true }));
     this.server.use(morgan("dev"));
     this.server.route("/").get((req: Request, res: Response) => {
-      res.status(200).send({
-        message: "GET request successfulll!!!!"
-      });
+      res.status(200).send("<h1>Typescript App</h1>");
     });
   }
 
