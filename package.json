@@ -5,7 +5,7 @@
   "main": "index.ts ",
   "scripts": {
     "build": "tsc ",
-    "build-prod": "--exec yarn restart",
+    "build-prod": "pm2 stop dist/index.js && --exec yarn restart",
     "restart": "rimraf dist && yarn build && yarn start",
     "start": "pm2 start dist/index.js && pm2 logs"
   },
