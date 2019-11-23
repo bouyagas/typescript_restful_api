@@ -23,10 +23,12 @@ class Server {
     this.server.use(json());
     this.server.use(urlencoded({ extended: true }));
     this.server.use(morgan("dev"));
-    this.server.use(express.static("../client/public/"));
-    this.server.get("*", (req: Request, res: Response) => {
-      res.sendFile(path.resolve(__dirname, "client", "public", "index.html"));
-    });
+    if (process.env.NODE_ENV === "production") {
+      this.server.use(express.static("../client/build"));
+      this.server.get("/", (req: Request, res: Response) => {
+        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+      });
+    }
   }
 
   public connectDB(): void {
