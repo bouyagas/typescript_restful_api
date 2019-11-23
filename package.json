@@ -7,7 +7,7 @@
     "build": "tsc ",
     "build-prod": "pm2 stop dist/index.js && yarn restart",
     "restart": "rimraf dist && yarn build && yarn start",
-    "start": "pm2 start dist/index.js && pm2 logs"
+    "start": "pm2 start dist/index.js"
   },
   "author": "Mohamed Gassama",
   "license": "MIT ",
