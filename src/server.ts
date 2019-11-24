@@ -26,7 +26,7 @@ class Server {
 
     this.server.use(express.static("../client/build"));
     this.server.get("*", (req: Request, res: Response) => {
-      res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+      res.sendFile(path.join(__dirname + "../client/build/index.html"));
     });
   }
 
