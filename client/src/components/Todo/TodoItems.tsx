@@ -1,11 +1,19 @@
 import React from "react";
 
-interface Props {}
+interface Props {
+  todo: {
+    _id: string | number | undefined;
+    task: string;
+    isComplete: boolean;
+  };
+}
 
-const TodoItems: React.FC<Props> = (): React.ReactElement => {
+const TodoItems: React.FC<Props> = ({ todo }): React.ReactElement => {
+  const { task, isComplete } = todo;
   return (
     <React.Fragment>
-      <h1>This is todos items</h1>
+      <p>{task}</p>
+      {isComplete}
     </React.Fragment>
   );
 };
