@@ -2,7 +2,9 @@ import React from "react";
 import Todo from "./components/Todo/TodoList";
 import "./App.css";
 
-const App: React.FC = (): React.ReactElement => {
+interface IProps {}
+
+const App: React.FC<IProps> = (): React.ReactElement => {
   return (
     <div className="App">
       <header className="App-header">

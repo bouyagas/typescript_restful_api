@@ -4,7 +4,6 @@ import axios, { AxiosResponse } from "axios";
 
 interface Props {}
 export interface ITodos {
-  data: [];
   _id: string | number | undefined;
   task: string;
   isComplete: boolean;
